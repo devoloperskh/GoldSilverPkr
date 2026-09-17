@@ -26,9 +26,10 @@ import java.util.concurrent.Executors;
 
 public class MainActivity extends Activity {
 
-    private TextView gold24, gold22, gold24Gram;
-    private TextView silverTola, silverGram;
+    private TextView gold24View, gold22View, gold24GramView;
+    private TextView silverTolaView, silverGramView;
     private TextView status;
+
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -84,16 +85,17 @@ public class MainActivity extends Activity {
         status.setPadding(0, 0, 0, 25);
         root.addView(status, matchWrap());
 
-        gold24 = addRateCard(root, "Gold 24K — Per Tola");
-        gold22 = addRateCard(root, "Gold 22K — Per Tola");
-        gold24Gram = addRateCard(root, "Gold 24K — Per Gram");
+        gold24View = addRateCard(root, "Gold 24K — Per Tola");
+        gold22View = addRateCard(root, "Gold 22K — Per Tola");
+        gold24GramView = addRateCard(root, "Gold 24K — Per Gram");
 
-        silverTola = addRateCard(root, "Silver — Per Tola");
-        silverGram = addRateCard(root, "Silver — Per Gram");
+        silverTolaView = addRateCard(root, "Silver — Per Tola");
+        silverGramView = addRateCard(root, "Silver — Per Gram");
 
         Button refresh = new Button(this);
         refresh.setText("Refresh Rates");
         refresh.setTextSize(16);
+
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +143,6 @@ public class MainActivity extends Activity {
         card.setTextSize(19);
         card.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
         card.setPadding(25, 25, 25, 25);
-
         card.setBackgroundColor(Color.rgb(35, 35, 35));
 
         LinearLayout.LayoutParams params =
@@ -231,11 +232,11 @@ public class MainActivity extends Activity {
                         @Override
                         public void run() {
 
-                            gold24.setText(g24);
-                            gold22.setText(g22);
-                            gold24Gram.setText(g24g);
-                            silverTola.setText(sTola);
-                            silverGram.setText(sGram);
+                            gold24View.setText(g24);
+                            gold22View.setText(g22);
+                            gold24GramView.setText(g24g);
+                            silverTolaView.setText(sTola);
+                            silverGramView.setText(sGram);
 
                             status.setText("● Live rates updated");
                         }
@@ -246,7 +247,9 @@ public class MainActivity extends Activity {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+
                             status.setText("Unable to update rates");
+
                             Toast.makeText(
                                     MainActivity.this,
                                     "Please check your internet connection.",
@@ -323,4 +326,4 @@ public class MainActivity extends Activity {
 
         super.onDestroy();
     }
-          }
+            }                          
