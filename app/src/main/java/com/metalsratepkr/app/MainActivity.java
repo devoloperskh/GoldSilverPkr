@@ -235,8 +235,8 @@ public class MainActivity extends Activity {
                             gold24View.setText(g24);
                             gold22View.setText(g22);
                             gold24GramView.setText(g24g);
-                            silverTolaView.setText(sTola);
-                            silverGramView.setText(sGram);
+silverTolaView.setText(sTola);
+silverGramView.setText(sGram);
 
                             status.setText("● Live rates updated");
                         }
